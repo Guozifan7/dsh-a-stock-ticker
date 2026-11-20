@@ -51,12 +51,55 @@ plugin_manager(action: "install_bundle", target: "<绝对路径>/dsh-a-stock-tic
 
 ## 截图与社交预览
 
-- 仓库首页用的图：`docs/panel.png`（README 里已引用 `docs/ticker.png` 与 `docs/panel.png`）。
-- 建议再补两张：`docs/chart.png`（分时图）与 `docs/settings.png`（设置页），README 的「盘中分时图」与「使用」两节可以各引一张。
+- 仓库首页用的图：`docs/ticker.png`、`docs/panel.png`、`docs/chart.png`、`docs/settings.png`（README 已全部引用）。
 - **Social preview**（Settings → General → Social preview，1280×640）：建议用 `docs/panel.png` 居中 + 标题「A股实时行情 · DSH 插件」做一张 1280×640 的图。
+
+## 上架 / 让别人搜到
+
+先说结论：DSH 的「插件市场」是你的安装包内置的**索引阅读器**，官方不提供"提交插件"的入口，也**不内置任何索引源**（官方文档原话）。所以"被搜到"靠三件事：发布索引、发布 npm 包、被社区市场收录。
+
+### A. 社区市场 dsh-plugin.org（实际被搜索的地方）
+
+前置条件（仓库已满足的会打勾）：
+
+- [x] 公开仓库
+- [ ] GitHub 仓库 **Topics** 加 `dsh-plugin`（Settings 右上角齿轮 → Topics）
+- [x] README 含安装命令 `dsh plugin --profile desktop add github:Guozifan7/dsh-a-stock-ticker`
+- [x] 导出 `apply(ctx)`、根目录有 `package.json`
+- [ ] 提交 Issue（模板会自动预填）：
+      https://github.com/dshplugin/dsh-plugin-hub/issues/new
+      按 `docs/github.md` 里的模板填写，能力分类选「界面与体验」
+- [ ] 想出现在 DSH 内「插件中心」：**必须发布 npm 包**（见 B）
+
+### B. 发布 npm 包（插件中心与 `dsh plugin add <包名>` 的前提）
+
+```powershell
+npm login                     # 需要 npm 账号
+cd C:\Users\GUO\Downloads\sound\dsh-a-stock-ticker
+npm publish --access public
+```
+
+发布前确认：`name` 未被占用（`npm view dsh-a-stock-ticker`）、`version` 已递增、`files` 里没有多余大文件。
+发布后把安装命令补成 `dsh plugin --profile desktop add dsh-a-stock-ticker`，并把 `docs/market/index.json` 的版本源改成 `{ "type": "npm" }`（见 `docs/market/README.md`）。
+
+### C. 自己的插件索引（DSH 内置「发现」可直接搜到）
+
+已备好：[`docs/market/index.json`](market/index.json)，用户添加这个 URL 即可搜索安装：
+
+```
+https://cdn.jsdelivr.net/gh/Guozifan7/dsh-a-stock-ticker@main/docs/market/index.json
+```
+
+每次发版后重新生成并提交：`node scripts/build-market-index.mjs`。
+
+### D. 把索引挂在 GitHub Pages（可选，比 jsDelivr 更稳）
+
+Settings → Pages → Build and deployment → Source: `Deploy from a branch`，Branch 选 `main`、目录 `/docs`，
+之后索引 URL 为 `https://Guozifan7.github.io/dsh-a-stock-ticker/market/index.json`。
 
 ## 建议勾选
 
 - Releases → 用上面的 `v1.0.0` 说明建一个 Release（打 tag `v1.0.0`）。
 - Settings → General → 勾选 **Issues**、**Discussions**（可选）。
 - 语言统计：仓库里 JS 占绝对多数（Host/Client 都是 JS，无构建），无需额外配置。
+- 仓库 Settings → General → **Topics** 至少加上 `dsh-plugin`（社区市场爬虫按它识别）。

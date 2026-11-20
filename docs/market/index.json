@@ -1,0 +1,44 @@
+{
+  "format": 1,
+  "title": {
+    "en": "Guozifan7 DSH plugins",
+    "zh": "Guozifan7 的 DSH 插件"
+  },
+  "description": {
+    "en": "Plugins maintained by Guozifan7 for DeepSeek Harness.",
+    "zh": "Guozifan7 维护的 DeepSeek Harness 插件。"
+  },
+  "plugins": [
+    {
+      "name": "dsh-a-stock-ticker",
+      "title": {
+        "en": "A-Share Quote Ticker",
+        "zh": "A股实时行情"
+      },
+      "description": {
+        "en": "Rotates real-time A-share quotes in the title bar; hover for every monitored quote plus industry boards, click a row for a Tonghuashun-style intraday chart. Name search, refresh rate, rotation interval and docked corner in Settings.",
+        "zh": "在界面标题栏竖向轮播 A 股实时行情，悬浮展开全部行情与行业指数，点个股看同花顺式盘中分时图；支持名称搜索、刷新频率、轮播间隔与停靠角落设置。"
+      },
+      "icon": "icons/dsh-a-stock-ticker.svg",
+      "author": "Guozifan7",
+      "homepage": "https://github.com/Guozifan7/dsh-a-stock-ticker#readme",
+      "repository": {
+        "url": "https://github.com/Guozifan7/dsh-a-stock-ticker"
+      },
+      "versions": [
+        {
+          "version": "1.0.0",
+          "publishTimestamp": 1795145112,
+          "source": {
+            "type": "git",
+            "url": "https://github.com/Guozifan7/dsh-a-stock-ticker",
+            "commit": "ed664b8d4be532de2d91c3415ab82d34ac662600"
+          },
+          "engines": {
+            "dsh": ">=0.2.2-rc.3"
+          }
+        }
+      ]
+    }
+  ]
+}

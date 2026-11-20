@@ -1,6 +1,6 @@
 {
   "meta": {
     "title": "A-Share Quote Ticker",
-    "description": "A scrolling real-time A-share quote bar in the top-left corner; hover it for every monitored quote. Stock codes, refresh rate, scroll speed and corner are set in Settings."
+    "description": "Rotates real-time A-share quotes in the title bar; hover for every monitored quote plus industry boards, click a row for a Tonghuashun-style intraday chart. Name search, refresh rate, rotation interval and docked corner in Settings."
   }
 }

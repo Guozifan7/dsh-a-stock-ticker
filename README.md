@@ -39,21 +39,41 @@
 
 ## 安装
 
-要求：已安装 DeepSeek Harness（桌面版或 `dsh web` 均可）。
+要求：DeepSeek Harness **≥ 0.2.2-rc.3**（`engines.dsh` 已声明，低版本会被拒绝安装）。
 
-```bash
-git clone https://github.com/<your-name>/dsh-a-stock-ticker.git
+三种方式任选其一。
+
+### 1. 一条命令（推荐）
+
+```powershell
+dsh plugin --profile desktop add github:Guozifan7/dsh-a-stock-ticker
 ```
 
-然后在 DSH 会话里让 Agent 安装本地目录：
+把 `desktop` 换成你的 profile 名（网页版通常是 `web`）。装完刷新页面。
+
+### 2. 在 DSH 的「发现」里搜索安装
+
+DSH 内置的插件市场是**索引驱动**的：插件 → 更多 → 实验性插件 → 打开「**自定义插件索引**」，然后在「**发现**」标签页 → **添加索引源**，填入：
+
+```
+https://cdn.jsdelivr.net/gh/Guozifan7/dsh-a-stock-ticker@main/docs/market/index.json
+```
+
+之后搜「A股」即可看到本插件并一键安装（索引文件为 [docs/market/index.json](docs/market/index.json)，任何人都可以添加）。
+
+### 3. 本地目录（开发用）
+
+```powershell
+git clone https://github.com/Guozifan7/dsh-a-stock-ticker.git
+```
+
+在 DSH 会话里让 Agent 安装该目录：
 
 ```
 plugin_manager(action: "install_bundle", target: "<绝对路径>/dsh-a-stock-ticker")
 ```
 
-或者手动把它加进 profile 的 `package.json` 依赖并在 `dsh.profile.bundles` 中登记包名 `dsh-a-stock-ticker`（等价于 `pnpm add <目录>`）。
-
-装好后：**设置 → A股行情** 即可配置；左上角标题栏出现行情条。若界面没更新，`Ctrl+R` 刷新一次页面。
+装好后：**设置 → A股行情** 即可配置；标题栏出现行情条。若界面没更新，`Ctrl+R` 刷新一次页面。
 
 ## 使用
 

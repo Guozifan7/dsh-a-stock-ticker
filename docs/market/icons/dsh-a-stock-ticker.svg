@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="A-share quote ticker">
+  <rect x="0.5" y="0.5" width="31" height="31" rx="8.5" fill="#141a21" stroke="#2b3542"/>
+  <g stroke-linecap="round">
+    <path d="M8 25.4v-5.2" stroke="#e5484d" stroke-width="1.3"/>
+    <rect x="6.6" y="18" width="2.8" height="4.9" rx="0.7" fill="#e5484d"/>
+    <path d="M14 25.4v-5.4" stroke="#e5484d" stroke-width="1.3"/>
+    <rect x="12.6" y="15.4" width="2.8" height="7.4" rx="0.7" fill="#e5484d"/>
+    <path d="M20 22.2v-4.2" stroke="#12a594" stroke-width="1.3"/>
+    <rect x="18.6" y="13.4" width="2.8" height="5.4" rx="0.7" fill="#12a594"/>
+  </g>
+  <path d="M7 12.4 12.6 7.2l3.4 3.2L25.3 4.8" fill="none" stroke="#f0b429" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M25.5 9.4V4.6h-4.6" fill="none" stroke="#f0b429" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

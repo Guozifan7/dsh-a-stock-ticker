@@ -39,10 +39,32 @@
 
 ## Install
 
-Requires a DeepSeek Harness installation (desktop app or `dsh web`).
+Requires DeepSeek Harness **≥ 0.2.2-rc.3** (`engines.dsh` is declared; older releases refuse the install).
 
-```bash
-git clone https://github.com/<your-name>/dsh-a-stock-ticker.git
+Pick one.
+
+### 1. One command (recommended)
+
+```powershell
+dsh plugin --profile desktop add github:Guozifan7/dsh-a-stock-ticker
+```
+
+Replace `desktop` with your profile name (`web` for the web build), then refresh the page.
+
+### 2. Through DSH's Discover tab
+
+DSH's built-in plugin market is **index driven**: Plugins → More → Experimental plugins → enable **Custom plugin indexes**, then open **Discover** → **Add index source** and paste:
+
+```
+https://cdn.jsdelivr.net/gh/Guozifan7/dsh-a-stock-ticker@main/docs/market/index.json
+```
+
+Search "A-share" there to install it in one click (the index lives at [docs/market/index.json](docs/market/index.json) and anyone may add it).
+
+### 3. Local directory (development)
+
+```powershell
+git clone https://github.com/Guozifan7/dsh-a-stock-ticker.git
 ```
 
 Then, in a DSH session, install the local directory:
@@ -50,8 +72,6 @@ Then, in a DSH session, install the local directory:
 ```
 plugin_manager(action: "install_bundle", target: "<absolute-path>/dsh-a-stock-ticker")
 ```
-
-Or add it to your profile `package.json` as a dependency and register `dsh-a-stock-ticker` in `dsh.profile.bundles` (equivalent to `pnpm add <dir>`).
 
 Afterwards open **Settings → A-Share Quotes** to configure it; refresh the page with `Ctrl+R` if the UI has not picked up the new bundle.
 
