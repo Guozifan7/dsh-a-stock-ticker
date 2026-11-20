@@ -1,0 +1,68 @@
+{
+  "name": "dsh-a-stock-ticker",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Real-time A-share quote ticker for the DeepSeek Harness Web UI: a compact rotating quote pill, a hover panel with every quote and industry boards, and Tonghuashun-style intraday charts.",
+  "license": "MIT",
+  "author": "Guozifan7",
+  "icon": "./icon.svg",
+  "engines": {
+    "node": ">=18"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Guozifan7/dsh-a-stock-ticker.git"
+  },
+  "homepage": "https://github.com/Guozifan7/dsh-a-stock-ticker#readme",
+  "bugs": {
+    "url": "https://github.com/Guozifan7/dsh-a-stock-ticker/issues"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "a-share",
+    "stock",
+    "stock-ticker",
+    "eastmoney",
+    "intraday-chart",
+    "finance"
+  ],
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "README.md",
+    "README.en.md",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "LICENSE",
+    "scripts/",
+    "test/",
+    "docs/"
+  ],
+  "scripts": {
+    "test": "node test/harness.mjs",
+    "build:symbols": "node scripts/build-symbols.mjs"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-connection"
+      ]
+    }
+  }
+}

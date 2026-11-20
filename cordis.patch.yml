@@ -1,0 +1,9 @@
+# dsh-a-stock-ticker bundle patch: one plugin row, two halves.
+#
+# The Host half only answers one same-origin quote route (so the browser half
+# never depends on a third-party CORS/CSP allowance); the Client half draws the
+# scrolling ticker in `shell.overlay` and its settings page in
+# `settings.section`.
+- insert:
+    - id: a-stock-ticker
+      name: 'dsh-a-stock-ticker'

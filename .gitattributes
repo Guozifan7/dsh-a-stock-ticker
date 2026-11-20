@@ -1,0 +1,7 @@
+# Keep the repository text files LF, whatever the platform default is.
+* text=auto eol=lf
+
+# Screenshots and icons are binary.
+*.png binary
+*.jpg binary
+*.ico binary

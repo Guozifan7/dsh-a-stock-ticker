@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "A-Share Quote Ticker",
+    "description": "A scrolling real-time A-share quote bar in the top-left corner; hover it for every monitored quote. Stock codes, refresh rate, scroll speed and corner are set in Settings."
+  }
+}
