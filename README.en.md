@@ -32,6 +32,10 @@
 - **Name search**
   - The settings page and the panel each have a search box that matches by **name or code**, instantly and offline, using an embedded catalogue of A-shares, indices and ETFs.
   - Picking from the settings box adds a permanent watch entry; picking in the panel opens a temporary "quick look" row that is polled but never persisted.
+- **Settings page (Settings → A-Share Quotes)**
+  - Show/hide switch, watch-list editing, refresh rate (2–60 s), rotation interval (1–15 s), docked corner, live status and a manual refresh.
+
+<img src="docs/settings.png" width="440" alt="Settings page">
 
 ## Install
 
