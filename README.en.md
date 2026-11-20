@@ -4,6 +4,7 @@
 
 [中文](README.md) · [Changelog](CHANGELOG.md) · [Contributing](CONTRIBUTING.md)
 
+[![test](https://github.com/Guozifan7/dsh-a-stock-ticker/actions/workflows/test.yml/badge.svg)](https://github.com/Guozifan7/dsh-a-stock-ticker/actions/workflows/test.yml)
 ![license](https://img.shields.io/badge/license-MIT-blue)
 
 ![Ticker](docs/ticker.png)
