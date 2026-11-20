@@ -1019,6 +1019,30 @@ window.__ModuleLoader__.load({
           volume: 0
         });
       }
+
+      // A real VWAP always sits inside the session's traded range. Index feeds
+      // report their constituents' turnover in the volume/amount columns, so the
+      // ratio there is meaningless (e.g. 14 instead of 3500) and would stretch the
+      // percentage grid to its widest step; fall back to the running mean of the
+      // prices in that case, which is what index charts show anyway.
+      let priceLow = Infinity;
+      let priceHigh = -Infinity;
+      let avgLow = Infinity;
+      let avgHigh = -Infinity;
+      for (const point of points) {
+        priceLow = Math.min(priceLow, point.price);
+        priceHigh = Math.max(priceHigh, point.price);
+        avgLow = Math.min(avgLow, point.avg);
+        avgHigh = Math.max(avgHigh, point.avg);
+      }
+      const vwapPlausible = priceLow > 0 && avgLow >= priceLow * 0.99 && avgHigh <= priceHigh * 1.01;
+      if (!vwapPlausible) {
+        let sum = 0;
+        points.forEach((point, index) => {
+          sum += point.price;
+          point.avg = sum / (index + 1);
+        });
+      }
       return points;
     }
 

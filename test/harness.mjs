@@ -854,6 +854,29 @@ const normalShareText = fake.collectText(normalTimeShare);
 check('normal session uses a tight percent grid', normalShareText.includes('-1.00%') && normalShareText.includes('+1.00%'), normalShareText.slice(0, 300));
 check('normal session price axis around prev close', normalShareText.includes('1472.28') && normalShareText.includes('1443.12'), normalShareText.slice(0, 300));
 
+// Index feeds carry their constituents' turnover, so the volume/amount ratio is
+// not the index's VWAP (it computes to ~14 instead of ~3500). The average must
+// fall back to the running mean instead of blowing up the percent grid.
+const indexBars = [
+  { time: '09:31', open: 3527.30, close: 3520.10, high: 3527.30, low: 3518.00, volume: 2.1e8, amount: 3.0e11 },
+  { time: '09:32', open: 3520.10, close: 3510.00, high: 3520.10, low: 3508.00, volume: 1.8e8, amount: 2.6e11 },
+  { time: '09:33', open: 3510.00, close: 3502.87, high: 3512.00, low: 3502.34, volume: 1.5e8, amount: 2.1e11 }
+];
+const indexSeries = internals.timeShareSeries(indexBars);
+equal('index series prepends the open', indexSeries.length, 4);
+check('index average stays inside the price range', indexSeries.every((point) => point.avg >= 3502 && point.avg <= 3528), indexSeries.map((p) => p.avg));
+const indexChart = renderComponent(internals.IntradayChart, {
+  chart: { bars: indexBars, prevClose: 3577.62, loading: false, error: null },
+  mode: 'time',
+  onMode: () => {},
+  t: ZN
+});
+const indexText = fake.collectText(indexChart);
+check('index grid uses the tight step, not the widest', indexText.includes('+2.50%') && indexText.includes('-2.50%'), indexText.slice(0, 320));
+check('index grid never falls back to 20%', !indexText.includes('+20.00%') && !indexText.includes('-20.00%'), indexText.slice(0, 320));
+check('index price axis around prev close', indexText.includes('3667.06') && indexText.includes('3488.18'), indexText.slice(0, 320));
+
+
 
 // A normal day keeps the previous-close reference line.
 const normalRange = renderComponent(internals.IntradayChart, {
