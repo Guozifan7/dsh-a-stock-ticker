@@ -26,6 +26,9 @@
   - Click any row to expand the session chart below it; click again to collapse, click another row to switch.
   - Symmetric percent grid **centred on the previous close** (0.5%–20% steps picked automatically), price labels on the left, percent labels on the right, a white price line, an orange VWAP line and a volume pane.
   - The time axis is fixed to 09:30–15:00, so the rest of the session stays blank; `1m / 5m` candlestick views are one click away.
+
+![Intraday chart](docs/chart.png)
+
 - **Name search**
   - The settings page and the panel each have a search box that matches by **name or code**, instantly and offline, using an embedded catalogue of A-shares, indices and ETFs.
   - Picking from the settings box adds a permanent watch entry; picking in the panel opens a temporary "quick look" row that is polled but never persisted.
